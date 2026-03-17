@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Oatmeal with Fruits",
+    "calories": 350,
+    "protein": 12,
+    "carbs": 60,
+    "fat": 8,
+    "date": "2025-02-01"
+  },
+  {
+    "id": 2,
+    "name": "Chicken Salad",
+    "calories": 420,
+    "protein": 35,
+    "carbs": 22,
+    "fat": 15,
+    "date": "2025-02-01"
+  },
+  {
+    "id": 3,
+    "name": "Protein Shake",
+    "calories": 180,
+    "protein": 25,
+    "carbs": 10,
+    "fat": 3,
+    "date": "2025-02-02"
+  },
+  {
+    "id": 4,
+    "name": "Pasta Bowl",
+    "calories": 520,
+    "protein": 18,
+    "carbs": 70,
+    "fat": 12,
+    "date": "2025-02-03"
+  }
+]

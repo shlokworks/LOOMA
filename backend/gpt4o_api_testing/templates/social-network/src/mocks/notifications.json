@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "type": "like",
+    "user": "Alex",
+    "message": "Alex liked your post",
+    "time": "2h ago",
+    "avatar": "https://i.pravatar.cc/150?img=32",
+    "read": false
+  },
+  {
+    "id": 2,
+    "type": "comment",
+    "user": "Riya",
+    "message": "Riya commented on your photo",
+    "time": "5h ago",
+    "avatar": "https://i.pravatar.cc/150?img=12",
+    "read": false
+  },
+  {
+    "id": 3,
+    "type": "follow",
+    "user": "John",
+    "message": "John started following you",
+    "time": "1d ago",
+    "avatar": "https://i.pravatar.cc/150?img=20",
+    "read": true
+  },
+  {
+    "id": 4,
+    "type": "system",
+    "user": "System",
+    "message": "Your password was successfully updated",
+    "time": "2d ago",
+    "avatar": "",
+    "read": true
+  }
+]

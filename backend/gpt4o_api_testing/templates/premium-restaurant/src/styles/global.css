@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* small global tweaks */
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-gray-50 text-gray-800 antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* utility: card background and soft shadow for consistent look */
+.card {
+  @apply bg-white rounded-xl shadow-sm border;
+}
+
+/* small helper for sticky top offset to account for NavBar height */
+.app-content {
+  padding-top: 5rem; /* matches NavBar fixed height */
+}
+
+/* responsive container helper */
+.container-max {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}

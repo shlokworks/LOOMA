@@ -1,0 +1,37 @@
+[
+  {
+    "id": "Q1",
+    "courseId": "C1",
+    "title": "OS Basics Quiz",
+    "questions": [
+      {
+        "id": "Q1-1",
+        "text": "Which component manages CPU scheduling?",
+        "type": "mcq",
+        "options": ["Scheduler", "Linker", "Loader", "Compiler"],
+        "answerIndex": 0
+      },
+      {
+        "id": "Q1-2",
+        "text": "True or False: Threads share the same address space.",
+        "type": "tf",
+        "options": ["True", "False"],
+        "answerIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "Q2",
+    "courseId": "C2",
+    "title": "HTML Basics Quiz",
+    "questions": [
+      {
+        "id": "Q2-1",
+        "text": "Which tag defines a hyperlink?",
+        "type": "mcq",
+        "options": ["<a>", "<link>", "<href>", "<img>"],
+        "answerIndex": 0
+      }
+    ]
+  }
+]

@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------
+   GLOBAL RESET & BASE
+--------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+}
+
+/* Hide tap highlight (mobile) */
+*:focus {
+  outline: none !important;
+}
+
+/* ---------------------------------------------------------
+   SCROLLBAR STYLING
+--------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 100, 100, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 100, 100, 0.5);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100,100,100,0.3) transparent;
+}
+
+/* ---------------------------------------------------------
+   PAGE TRANSITIONS
+--------------------------------------------------------- */
+.fade-enter {
+  opacity: 0;
+  transform: translateY(6px);
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+/* ---------------------------------------------------------
+   SHADOW PRESETS
+--------------------------------------------------------- */
+.shadow-soft {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.shadow-hard {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+.shadow-card {
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+/* ---------------------------------------------------------
+   CUSTOM UTILITY CLASSES
+--------------------------------------------------------- */
+.card {
+  @apply bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-xl shadow-sm p-4;
+}
+
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-100 px-4 py-2 rounded-lg transition;
+}
+
+.input-box {
+  @apply w-full p-3 rounded-lg bg-gray-100 dark:bg-gray-700 dark:text-white;
+}
+
+/* ---------------------------------------------------------
+   CHAT UI POLISH
+--------------------------------------------------------- */
+.message-appear {
+  animation: popIn 0.25s ease forwards;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ---------------------------------------------------------
+   STORY RING ANIMATION
+--------------------------------------------------------- */
+.story-ring {
+  animation: ringPulse 1.4s infinite ease-in-out;
+}
+
+@keyframes ringPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+/* ---------------------------------------------------------
+   TOOLTIP STYLING
+--------------------------------------------------------- */
+.tooltip {
+  @apply absolute bg-black text-white text-xs px-2 py-1 rounded opacity-0 pointer-events-none transition;
+}
+
+.tooltip-parent:hover .tooltip {
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
+/* ---------------------------------------------------------
+   DARK MODE FIXES
+--------------------------------------------------------- */
+.dark .shadow-card {
+  box-shadow: 0 2px 8px rgba(255,255,255,0.05);
+}
+
+.dark input,
+.dark textarea {
+  color: #e5e7eb;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE FIXES
+--------------------------------------------------------- */
+.container {
+  @apply max-w-7xl mx-auto px-4;
+}
+
+/* ---------------------------------------------------------
+   NAVBAR / SIDEBAR POLISH
+--------------------------------------------------------- */
+.nav-active {
+  @apply bg-blue-600 text-white shadow;
+}
+
+.nav-item {
+  @apply flex items-center gap-3 p-3 rounded-lg transition hover:bg-gray-200 dark:hover:bg-gray-700;
+}
+
+/* ---------------------------------------------------------
+   Notification glow for unread items
+--------------------------------------------------------- */
+.unread-glow {
+  animation: unreadPulse 1.4s infinite ease-in-out;
+}
+
+@keyframes unreadPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59,130,246,0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(59,130,246,0);
+  }
+}
+
+/* ---------------------------------------------------------
+   POST ANIMATION
+--------------------------------------------------------- */
+.post-appear {
+  animation: slideIn .3s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+     "email": "john@example.com", 
+    "username": "@johndoe",
+    "avatar": "https://i.pravatar.cc/150?img=3",
+    "bio": "Building cool things.",
+    "followers": 1200,
+    "following": 340,
+    "isFollowing": false
+  },
+  {
+    "id": 2,
+    "name": "Sarah Kim",
+     "email": "sarah@example.com", 
+    "username": "@sarahkim",
+    "avatar": "https://i.pravatar.cc/150?img=5",
+    "bio": "Frontend developer ✨",
+    "followers": 980,
+    "following": 180,
+    "isFollowing": true
+  },
+  {
+  "id": 99,
+  "name": "Dhruvi Gaira",
+  "username": "@dhruvi",
+  "email": "dhruvigaira3009@gmail.com",
+  "avatar": "https://i.pravatar.cc/150?img=32",
+  "bio": "Frontend Developer | Builder",
+  "followers": 120,
+  "following": 200
+}
+]

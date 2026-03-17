@@ -1,0 +1,9 @@
+[
+  { "id": 1, "name": "Delhi" },
+  { "id": 2, "name": "Mumbai" },
+  { "id": 3, "name": "Bangalore" },
+  { "id": 4, "name": "Hyderabad" },
+  { "id": 5, "name": "Pune" },
+  { "id": 6, "name": "Chennai" },
+  { "id": 7, "name": "Goa" }
+]

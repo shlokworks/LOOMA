@@ -1,0 +1,38 @@
+[
+  {
+    "id": "C1",
+    "title": "Intro to Operating Systems",
+    "summary": "Learn OS fundamentals: processes, threads, scheduling, synchronization.",
+    "category": "Computer Science",
+    "level": "Beginner",
+    "instructorId": "U2",
+    "price": 0,
+    "thumbnail": "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg",
+    "lessonIds": ["L1", "L2"],
+    "quizIds": ["Q1"]
+  },
+  {
+    "id": "C2",
+    "title": "Web Development Basics",
+    "summary": "HTML, CSS and JavaScript fundamentals to build interactive web pages.",
+    "category": "Web",
+    "level": "Beginner",
+    "instructorId": "U3",
+    "price": 499,
+    "thumbnail": "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
+    "lessonIds": ["L3", "L4"],
+    "quizIds": ["Q2"]
+  },
+  {
+    "id": "C3",
+    "title": "Data Structures Quickstart",
+    "summary": "Essential data structures: arrays, lists, stacks, queues and trees.",
+    "category": "Computer Science",
+    "level": "Beginner",
+    "instructorId": "U2",
+    "price": 299,
+    "thumbnail": "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg",
+    "lessonIds": ["L5"],
+    "quizIds": []
+  }
+]

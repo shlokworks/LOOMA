@@ -1,0 +1,56 @@
+[
+  {
+    "id": "C1",
+    "name": "TechNova Solutions",
+    "industry": "Software Development",
+    "logo": "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=160&h=160&fit=crop",
+    "size": "500-1000 employees",
+    "location": "Bangalore, India",
+    "description": "TechNova specializes in enterprise cloud products and digital transformation."
+  },
+  {
+    "id": "C2",
+    "name": "FinEdge Analytics",
+    "industry": "FinTech",
+    "logo": "https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=160&h=160&fit=crop",
+    "size": "200-500 employees",
+    "location": "Hyderabad, India",
+    "description": "FinEdge provides AI-powered financial analytics and risk platforms for institutions."
+  },
+  {
+    "id": "C3",
+    "name": "HealthSync Labs",
+    "industry": "Healthcare Tech",
+    "logo": "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=160&h=160&fit=crop",
+    "size": "1000+ employees",
+    "location": "Pune, India",
+    "description": "HealthSync builds connected health software and hospital automation systems."
+  },
+  {
+    "id": "C4",
+    "name": "EcoWare Industries",
+    "industry": "Sustainable Manufacturing",
+    "logo": "https://images.pexels.com/photos/3952238/pexels-photo-3952238.jpeg?auto=compress&cs=tinysrgb&w=160&h=160&fit=crop",
+    "size": "300-700 employees",
+    "location": "Chennai, India",
+    "description": "EcoWare focuses on biodegradable packaging and eco-friendly materials."
+  },
+  {
+    "id": "C5",
+    "name": "Skyline Digital",
+    "industry": "Digital Marketing",
+    "logo": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=160&h=160&fit=crop",
+    "size": "150-300 employees",
+    "location": "Mumbai, India",
+    "description": "Skyline creates brand-focused digital advertising campaigns and analytics."
+  },
+  {
+    "id": "C6",
+    "name": "DataForge Systems",
+    "industry": "AI & Data Engineering",
+    "logo": "https://images.pexels.com/photos/386196/pexels-photo-386196.jpeg?auto=compress&cs=tinysrgb&w=160&h=160&fit=crop",
+    "size": "400-800 employees",
+    "location": "Gurgaon, India",
+    "description": "DataForge specializes in big data infrastructure and real-time analytics."
+  }
+]

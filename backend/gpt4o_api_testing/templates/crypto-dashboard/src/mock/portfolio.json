@@ -1,0 +1,8 @@
+{
+  "balance": 15000,
+  "holdings": [
+    { "coinId": "bitcoin", "amount": 0.12 },
+    { "coinId": "ethereum", "amount": 1.5 },
+    { "coinId": "solana", "amount": 10 }
+  ]
+}

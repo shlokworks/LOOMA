@@ -1,0 +1,21 @@
+{
+  "name": "Gourmet Palace",
+  "address": "12 Crescent Avenue, Green Street, San Jose",
+  "phone": "(408) 555-0192",
+  "email": "contact@gourmetpalace.com",
+
+  "bannerImage": "https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg",
+
+  "heroTagline": "Fine Dining Redefined",
+  "description": "Experience the finest cuisine crafted with passion and served with elegance. From traditional flavors to modern fusion, our menu celebrates global culinary excellence.",
+
+  "openingHours": {
+    "monday": "10:00 AM - 10:00 PM",
+    "tuesday": "10:00 AM - 10:00 PM",
+    "wednesday": "10:00 AM - 10:00 PM",
+    "thursday": "10:00 AM - 10:00 PM",
+    "friday": "10:00 AM - 11:00 PM",
+    "saturday": "10:00 AM - 11:00 PM",
+    "sunday": "11:00 AM - 9:00 PM"
+  }
+}

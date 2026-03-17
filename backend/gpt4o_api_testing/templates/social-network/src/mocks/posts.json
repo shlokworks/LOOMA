@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "content": "Loving this new social network template!",
+    "likes": 34,
+    "comments": 3,
+    "timestamp": "2025-01-12T12:32:00Z"
+  },
+  {
+    "id": 2,
+    "userId": 2,
+    "content": "React + Tailwind = ❤️",
+    "likes": 58,
+    "comments": 5,
+    "timestamp": "2025-01-11T08:10:00Z"
+  }
+]

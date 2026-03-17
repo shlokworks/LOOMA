@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global page styling */
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-gray-50 text-gray-800 antialiased;
+}
+
+/* Layout container */
+.page-container {
+  @apply max-w-6xl mx-auto px-4;
+}
+
+/* Reusable card style */
+.card {
+  @apply bg-white rounded-xl shadow-sm border p-4;
+}

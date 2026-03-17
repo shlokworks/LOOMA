@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Global Tech Summit 2025",
+    "cover": "https://images.unsplash.com/photo-1551836022-4c4c79ecde22",
+    "location": "San Francisco, USA",
+    "date": "2025-07-12",
+    "time": "10:00 AM - 5:00 PM",
+    "description": "A world-class tech summit bringing together innovators, founders, and engineers to discuss the future of technology and AI.",
+    "category": "Tech"
+  },
+  {
+    "id": 2,
+    "title": "Creative Arts Expo",
+    "cover": "https://images.unsplash.com/photo-1531058020387-3be344556be6",
+    "location": "Paris, France",
+    "date": "2025-08-05",
+    "time": "9:00 AM - 6:00 PM",
+    "description": "An immersive exhibition showcasing digital art, photography, and interactive installations by global artists.",
+    "category": "Art"
+  },
+  {
+    "id": 3,
+    "title": "Business Leadership Conference",
+    "cover": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+    "location": "London, UK",
+    "date": "2025-09-20",
+    "time": "11:00 AM - 4:00 PM",
+    "description": "Leading CEOs and entrepreneurs share strategies for scaling companies and driving growth.",
+    "category": "Business"
+  },
+  {
+    "id": 4,
+    "title": "Wellness & Health Expo",
+    "cover": "https://images.unsplash.com/photo-1554284126-aa88f22d8b74",
+    "location": "Tokyo, Japan",
+    "date": "2025-11-10",
+    "time": "10:00 AM - 7:00 PM",
+    "description": "A global platform discussing mental health, modern healthcare innovations, and wellness trends.",
+    "category": "Health"
+  }
+]

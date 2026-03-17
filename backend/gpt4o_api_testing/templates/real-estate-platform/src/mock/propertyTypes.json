@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "Apartment" },
+  { "id": 2, "name": "Villa" },
+  { "id": 3, "name": "Studio" },
+  { "id": 4, "name": "Penthouse" },
+  { "id": 5, "name": "Office Space" },
+  { "id": 6, "name": "Farmhouse" }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Organizer Admin",
+    "email": "admin@eventpro.com",
+    "password": "admin123"
+  },
+  {
+    "id": 2,
+    "name": "Jane Attendee",
+    "email": "jane@example.com",
+    "password": "password123"
+  }
+]

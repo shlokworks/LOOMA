@@ -1,0 +1,23 @@
+[
+  {
+    "id": "U1",
+    "name": "Priya Singh",
+    "role": "student",
+    "email": "priya@example.com",
+    "avatar": "https://via.placeholder.com/128?text=Priya"
+  },
+  {
+    "id": "U2",
+    "name": "Dr. Rohit Mehta",
+    "role": "instructor",
+    "email": "rohit@example.com",
+    "avatar": "https://via.placeholder.com/128?text=Rohit"
+  },
+  {
+    "id": "U3",
+    "name": "Ananya Roy",
+    "role": "instructor",
+    "email": "ananya@example.com",
+    "avatar": "https://via.placeholder.com/128?text=Ananya"
+  }
+]

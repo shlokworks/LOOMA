@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Margherita Pizza",
+    "category": "Mains",
+    "price": 12.99,
+    "rating": 4.7,
+    "image": "https://images.pexels.com/photos/4109084/pexels-photo-4109084.jpeg",
+    "description": "Classic pizza with fresh tomatoes, mozzarella cheese, and basil."
+  },
+  {
+    "id": 2,
+    "name": "Chicken Alfredo Pasta",
+    "category": "Mains",
+    "price": 14.5,
+    "rating": 4.5,
+    "image": "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg",
+    "description": "Creamy alfredo sauce served with grilled chicken and fettuccine."
+  },
+  {
+    "id": 3,
+    "name": "French Fries",
+    "category": "Starters",
+    "price": 5.99,
+    "rating": 4.2,
+    "image": "https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg",
+    "description": "Crispy golden fries served with ketchup and mayo dip."
+  },
+  {
+    "id": 4,
+    "name": "Tomato Soup",
+    "category": "Starters",
+    "price": 6.5,
+    "rating": 4.1,
+    "image": "https://images.pexels.com/photos/594993/pexels-photo-594993.jpeg",
+    "description": "Warm and tangy tomato soup with fresh herbs."
+  },
+  {
+    "id": 5,
+    "name": "Chocolate Lava Cake",
+    "category": "Desserts",
+    "price": 7.99,
+    "rating": 4.8,
+    "image": "https://images.pexels.com/photos/4109994/pexels-photo-4109994.jpeg",
+    "description": "Warm chocolate cake with a molten chocolate center."
+  },
+  {
+    "id": 6,
+    "name": "Vanilla Ice Cream",
+    "category": "Desserts",
+    "price": 4.99,
+    "rating": 4.4,
+    "image": "https://images.pexels.com/photos/461430/pexels-photo-461430.jpeg",
+    "description": "Classic vanilla ice cream made with premium cream."
+  },
+  {
+    "id": 7,
+    "name": "Mojito",
+    "category": "Drinks",
+    "price": 5.5,
+    "rating": 4.6,
+    "image": "https://images.pexels.com/photos/452736/pexels-photo-452736.jpeg",
+    "description": "Refreshing mint and lime mojito served chilled."
+  },
+  {
+    "id": 8,
+    "name": "Cold Coffee",
+    "category": "Drinks",
+    "price": 4.75,
+    "rating": 4.3,
+    "image": "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg",
+    "description": "Iced coffee blended with cream and chocolate."
+  }
+]

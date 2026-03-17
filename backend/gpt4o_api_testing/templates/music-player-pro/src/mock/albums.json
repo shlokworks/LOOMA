@@ -1,0 +1,8 @@
+[
+  { "id": "AL1", "title": "City Lights", "artistId": "A1", "image": "https://via.placeholder.com/200?text=City+Lights", "year": 2023 },
+  { "id": "AL2", "title": "Moonchild", "artistId": "A2", "image": "https://via.placeholder.com/200?text=Moonchild", "year": 2024 },
+  { "id": "AL3", "title": "Electric Dreams", "artistId": "A5", "image": "https://via.placeholder.com/200?text=Electric+Dreams", "year": 2022 },
+  { "id": "AL4", "title": "Neon Skyline", "artistId": "A10", "image": "https://via.placeholder.com/200?text=Neon+Skyline", "year": 2023 },
+  { "id": "AL5", "title": "Echoes Unplugged", "artistId": "A8", "image": "https://via.placeholder.com/200?text=Echoes", "year": 2021 },
+  { "id": "AL6", "title": "Soul Revival", "artistId": "A6", "image": "https://via.placeholder.com/200?text=Soul+Revival", "year": 2023 }
+]

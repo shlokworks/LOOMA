@@ -1,0 +1,21 @@
+{
+  "weeklyCaloriesBurned": [
+    { "day": "Mon", "value": 250 },
+    { "day": "Tue", "value": 400 },
+    { "day": "Wed", "value": 150 },
+    { "day": "Thu", "value": 500 },
+    { "day": "Fri", "value": 350 },
+    { "day": "Sat", "value": 600 },
+    { "day": "Sun", "value": 0 }
+  ],
+
+  "weeklyCaloriesConsumed": [
+    { "day": "Mon", "value": 1800 },
+    { "day": "Tue", "value": 2000 },
+    { "day": "Wed", "value": 1700 },
+    { "day": "Thu", "value": 1900 },
+    { "day": "Fri", "value": 2100 },
+    { "day": "Sat", "value": 2300 },
+    { "day": "Sun", "value": 0 }
+  ]
+}

@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Light clean LMS theme */
+body {
+  background-color: #F8FAFC;
+  color: #374151;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Clean card */
+.card {
+  @apply bg-white rounded-xl border border-gray-200 shadow-sm;
+}
+
+.card-hover {
+  @apply transition hover:shadow-md hover:-translate-y-[2px];
+}

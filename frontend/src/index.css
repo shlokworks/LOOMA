@@ -1,0 +1,22 @@
+/* index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Monaco editor container theming */
+.dark .monaco-editor-container {
+  background-color: #1f2937 !important;
+}
+
+.light .monaco-editor-container {
+  background-color: #ffffff !important;
+}

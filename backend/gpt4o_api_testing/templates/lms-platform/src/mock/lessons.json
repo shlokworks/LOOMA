@@ -1,0 +1,42 @@
+[
+  {
+    "id": "L1",
+    "courseId": "C1",
+    "title": "What is an OS?",
+    "durationSec": 420,
+    "videoUrl": "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+    "content": "Introductory lesson describing what an operating system does."
+  },
+  {
+    "id": "L2",
+    "courseId": "C1",
+    "title": "Processes and Threads",
+    "durationSec": 600,
+    "videoUrl": "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+    "content": "Difference between processes and threads with examples."
+  },
+  {
+    "id": "L3",
+    "courseId": "C2",
+    "title": "HTML Basics",
+    "durationSec": 300,
+    "videoUrl": "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+    "content": "Introduction to HTML structure and elements."
+  },
+  {
+    "id": "L4",
+    "courseId": "C2",
+    "title": "CSS Basics",
+    "durationSec": 360,
+    "videoUrl": "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+    "content": "Styling pages with CSS."
+  },
+  {
+    "id": "L5",
+    "courseId": "C3",
+    "title": "Arrays and Lists",
+    "durationSec": 480,
+    "videoUrl": "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+    "content": "Basic data structures: arrays and lists."
+  }
+]

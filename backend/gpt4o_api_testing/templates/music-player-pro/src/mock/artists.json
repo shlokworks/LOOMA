@@ -1,0 +1,12 @@
+[
+  { "id": "A1", "name": "Nova Beats", "image": "https://via.placeholder.com/150?text=Nova+Beats", "genre": "Electronic" },
+  { "id": "A2", "name": "Luna Waves", "image": "https://via.placeholder.com/150?text=Luna+Waves", "genre": "Pop" },
+  { "id": "A3", "name": "Echo Division", "image": "https://via.placeholder.com/150?text=Echo+Division", "genre": "Rock" },
+  { "id": "A4", "name": "Skyline Harmony", "image": "https://via.placeholder.com/150?text=Skyline", "genre": "Indie" },
+  { "id": "A5", "name": "Midnight Pulse", "image": "https://via.placeholder.com/150?text=Midnight+Pulse", "genre": "EDM" },
+  { "id": "A6", "name": "RetroSoul", "image": "https://via.placeholder.com/150?text=RetroSoul", "genre": "Soul" },
+  { "id": "A7", "name": "Vibe Theory", "image": "https://via.placeholder.com/150?text=Vibe+Theory", "genre": "Hip-Hop" },
+  { "id": "A8", "name": "Crimson Echoes", "image": "https://via.placeholder.com/150?text=Crimson", "genre": "Alternative" },
+  { "id": "A9", "name": "Golden Strings", "image": "https://via.placeholder.com/150?text=Golden+Strings", "genre": "Classical" },
+  { "id": "A10", "name": "Night Drive Collective", "image": "https://via.placeholder.com/150?text=Night+Drive", "genre": "Synthwave" }
+]

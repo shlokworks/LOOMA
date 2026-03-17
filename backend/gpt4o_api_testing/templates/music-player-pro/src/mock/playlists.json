@@ -1,0 +1,26 @@
+[
+  {
+    "id": "P1",
+    "name": "Top Picks",
+    "image": "https://via.placeholder.com/200?text=Top+Picks",
+    "songIds": ["S1", "S3", "S5", "S8", "S12", "S17"]
+  },
+  {
+    "id": "P2",
+    "name": "Chill Vibes",
+    "image": "https://via.placeholder.com/200?text=Chill+Vibes",
+    "songIds": ["S6", "S9", "S11", "S20", "S22", "S25"]
+  },
+  {
+    "id": "P3",
+    "name": "EDM Mix",
+    "image": "https://via.placeholder.com/200?text=EDM+Mix",
+    "songIds": ["S3", "S15", "S19", "S24", "S30"]
+  },
+  {
+    "id": "P4",
+    "name": "Rock Hits",
+    "image": "https://via.placeholder.com/200?text=Rock+Hits",
+    "songIds": ["S13", "S18", "S21", "S23"]
+  }
+]

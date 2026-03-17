@@ -1,0 +1,9 @@
+{
+  "dailyCalorieGoal": 2000,
+  "dailyBurnGoal": 500,
+  "monthlyWorkoutGoal": 20,
+  "currentProgress": {
+    "caloriesBurned": 1100,
+    "workoutsCompleted": 5
+  }
+}
