@@ -196,12 +196,9 @@ router.post('/:id/invite', async (req, res) => {
       'INSERT INTO collaborators (id, project_id, user_id, email, role, invite_token, invited_by) VALUES (?, ?, ?, ?, ?, ?, ?)'
     ).run(collabId, req.params.id, invitedUser?.id || null, normalEmail, role, inviteToken, req.user.id);
 
-    // Send invite email
-    try {
-      await sendInviteEmail(normalEmail, req.user.name, project.name, inviteToken);
-    } catch (emailErr) {
-      console.error('Email send failed (invite still created):', emailErr.message);
-    }
+    // Send invite email (fire-and-forget so the response isn't blocked by SMTP)
+    sendInviteEmail(normalEmail, req.user.name, project.name, inviteToken)
+      .catch(emailErr => console.error('Email send failed (invite still created):', emailErr.message));
 
     res.status(201).json({ success: true, message: `Invite sent to ${normalEmail}` });
   } catch (err) {
