@@ -1,44 +1,10 @@
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 
-// Create transporter — auto-uses Ethereal (fake SMTP) if no EMAIL_USER is set.
-// Ethereal emails are NOT delivered; view them at the preview URL logged in the console.
-let transporter;
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-async function getTransporter() {
-  if (transporter) return transporter;
+const FROM    = process.env.EMAIL_FROM || 'Looma <onboarding@resend.dev>';
+const APP_URL = process.env.APP_URL    || 'http://localhost:5173';
 
-  if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-    // Real SMTP (Gmail, etc.)
-    transporter = nodemailer.createTransport({
-      host:   process.env.EMAIL_HOST   || 'smtp.gmail.com',
-      port:   parseInt(process.env.EMAIL_PORT || '587'),
-      secure: process.env.EMAIL_SECURE === 'true',
-      auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
-    });
-  } else {
-    // Auto-create a free Ethereal test account — no config needed
-    const testAccount = await nodemailer.createTestAccount();
-    transporter = nodemailer.createTransport({
-      host:   'smtp.ethereal.email',
-      port:   587,
-      secure: false,
-      auth: { user: testAccount.user, pass: testAccount.pass },
-    });
-    console.log('📧 Using Ethereal test email account:', testAccount.user);
-  }
-  return transporter;
-}
-
-const FROM = process.env.EMAIL_FROM || `"Looma" <${process.env.EMAIL_USER}>`;
-const APP_URL = process.env.APP_URL || 'http://localhost:5173';
-
-/**
- * Send a collaboration invite email.
- * @param {string} toEmail         - recipient email
- * @param {string} inviterName     - name of the person who invited
- * @param {string} projectName     - name of the project
- * @param {string} inviteToken     - unique token for accepting
- */
 async function sendInviteEmail(toEmail, inviterName, projectName, inviteToken) {
   const acceptUrl = `${APP_URL}/invite/${inviteToken}`;
 
@@ -79,20 +45,12 @@ async function sendInviteEmail(toEmail, inviterName, projectName, inviteToken) {
     </div>
     <div class="body">
       <h2>You've been invited to collaborate!</h2>
-      <p>
-        <strong>${inviterName}</strong> has invited you to collaborate on a project in Looma.
-      </p>
+      <p><strong>${inviterName}</strong> has invited you to collaborate on a project in Looma.</p>
       <p>Project:</p>
       <div class="project-badge">📁 ${projectName}</div>
-      <p>
-        Click the button below to accept the invitation and start collaborating
-        with real-time editing — like Google Docs, but for code.
-      </p>
+      <p>Click the button below to accept the invitation and start collaborating with real-time editing — like Google Docs, but for code.</p>
       <a class="btn" href="${acceptUrl}">Accept Invitation →</a>
-      <p class="note">
-        This link will expire in 7 days. If you don't have a Looma account yet,
-        you'll be asked to create one first.
-      </p>
+      <p class="note">This link will expire in 7 days. If you don't have a Looma account yet, you'll be asked to create one first.</p>
     </div>
     <div class="footer">
       © ${new Date().getFullYear()} Looma · AI-Powered Development Platform<br/>
@@ -102,20 +60,13 @@ async function sendInviteEmail(toEmail, inviterName, projectName, inviteToken) {
 </body>
 </html>`;
 
-  const t = await getTransporter();
-  const info = await t.sendMail({
+  await resend.emails.send({
     from:    FROM,
     to:      toEmail,
     subject: `${inviterName} invited you to "${projectName}" on Looma`,
     html,
     text: `${inviterName} invited you to collaborate on "${projectName}" in Looma.\n\nAccept here: ${acceptUrl}`,
   });
-
-  // If using Ethereal, log the preview URL so you can see the email in your browser
-  const previewUrl = nodemailer.getTestMessageUrl(info);
-  if (previewUrl) {
-    console.log(`📧 Email preview (Ethereal): ${previewUrl}`);
-  }
 }
 
 module.exports = { sendInviteEmail };
