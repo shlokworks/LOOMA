@@ -121,7 +121,7 @@ export default function Dashboard() {
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-6 py-12">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Hero section */}
         <div className="text-center mb-10">
           <h2 className="text-4xl font-black text-white mb-3">
@@ -181,18 +181,21 @@ export default function Dashboard() {
 
         {/* My Projects */}
         <div>
-          <div className="flex items-center justify-between mb-5">
-            <h3 className="text-xl font-bold text-white">My Projects</h3>
+          <div className="flex items-center justify-between mb-5 gap-2">
+            <div className="flex items-center gap-3">
+              <h3 className="text-lg sm:text-xl font-bold text-white">My Projects</h3>
+              <span className="text-white/30 text-sm">{allProjects.length} project{allProjects.length !== 1 ? "s" : ""}</span>
+            </div>
             <button
               onClick={() => navigate("/new-project")}
-              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white text-sm font-semibold rounded-xl transition-all"
+              className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white text-sm font-semibold rounded-xl transition-all flex-shrink-0"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4"/>
               </svg>
-              New Project
+              <span className="hidden sm:inline">New Project</span>
+              <span className="sm:hidden">New</span>
             </button>
-            <span className="text-white/30 text-sm">{allProjects.length} project{allProjects.length !== 1 ? "s" : ""}</span>
           </div>
 
           {projLoading ? (

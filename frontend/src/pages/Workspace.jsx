@@ -43,6 +43,8 @@ export default function Workspace() {
   const [isExporting, setIsExporting]             = useState(false);
   const [showGitSidebar, setShowGitSidebar]       = useState(false);
   const [showCollaborators, setShowCollaborators] = useState(false);
+  const [showMobileFileTree, setShowMobileFileTree] = useState(false);
+  const [mobilePanel, setMobilePanel]             = useState("editor"); // 'editor' | 'preview'
 
   // ── Collab state ──────────────────────────────────────────────────────
   const socketRef       = useRef(null);
@@ -243,9 +245,63 @@ export default function Workspace() {
         </div>
       )}
 
-      <div className="flex flex-1 min-h-0 p-4 gap-4">
-        {/* File Tree */}
-        <div className="w-64 flex-shrink-0 flex flex-col">
+      {/* Mobile panel tabs */}
+      <div className={`md:hidden flex border-b ${theme === "dark" ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"}`}>
+        <button
+          onClick={() => setShowMobileFileTree(p => !p)}
+          className={`px-4 py-2 text-xs font-medium flex items-center gap-1.5 border-r ${theme === "dark" ? "border-gray-700 text-gray-300" : "border-gray-200 text-gray-600"} ${showMobileFileTree ? "bg-blue-500/10 text-blue-400" : ""}`}
+        >
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+          </svg>
+          Files
+        </button>
+        <button
+          onClick={() => setMobilePanel("editor")}
+          className={`flex-1 py-2 text-xs font-medium ${mobilePanel === "editor" ? "text-blue-400 border-b-2 border-blue-400" : theme === "dark" ? "text-gray-400" : "text-gray-500"}`}
+        >
+          Editor
+        </button>
+        <button
+          onClick={() => setMobilePanel("preview")}
+          className={`flex-1 py-2 text-xs font-medium ${mobilePanel === "preview" ? "text-purple-400 border-b-2 border-purple-400" : theme === "dark" ? "text-gray-400" : "text-gray-500"}`}
+        >
+          Preview
+        </button>
+      </div>
+
+      <div className="flex flex-1 min-h-0 p-2 sm:p-4 gap-2 sm:gap-4 relative">
+        {/* Mobile File Tree overlay */}
+        {showMobileFileTree && (
+          <div className="absolute inset-0 z-40 md:hidden" onClick={() => setShowMobileFileTree(false)}>
+            <div
+              className={`w-64 h-full shadow-2xl border-r flex flex-col ${theme === "dark" ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}
+              onClick={e => e.stopPropagation()}
+            >
+              <div className={`p-3 border-b flex items-center justify-between ${theme === "dark" ? "border-gray-700" : "border-gray-200"}`}>
+                <h2 className="text-sm font-semibold">Files</h2>
+                <div className="flex gap-1">
+                  <button onClick={() => openNewFolderModal()} className="p-1 bg-purple-500 hover:bg-purple-600 text-white rounded transition-colors">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                    </svg>
+                  </button>
+                  <button onClick={() => openNewFileModal()} className="p-1 bg-green-500 hover:bg-green-600 text-white rounded transition-colors">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div className="p-2 overflow-auto flex-1">
+                <FileTree activePath={activeFile} onSelect={(f) => { setActiveFile(f); setShowMobileFileTree(false); }} onNewFile={openNewFileModal} onNewFolder={openNewFolderModal} />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Desktop File Tree */}
+        <div className="hidden md:flex w-64 flex-shrink-0 flex-col">
           <div className={`rounded-xl shadow-lg border flex-1 overflow-hidden ${theme === "dark" ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
             <div className={`p-3 border-b flex items-center justify-between ${theme === "dark" ? "border-gray-700" : "border-gray-200"}`}>
               <h2 className="text-sm font-semibold flex items-center gap-2">
@@ -276,7 +332,7 @@ export default function Workspace() {
         {/* Main area */}
         <div className="flex flex-1 min-w-0 gap-4">
           {/* Editor + Preview */}
-          <div className={`flex-1 min-w-0 ${!showGitSidebar && !showCollaborators ? "grid grid-cols-2 gap-4" : "flex flex-col"}`}>
+          <div className={`flex-1 min-w-0 ${!showGitSidebar && !showCollaborators ? "hidden md:grid grid-cols-2 gap-4" : "hidden md:flex flex-col"}`}>
             {!showGitSidebar && !showCollaborators ? (
               <>
                 {/* Editor */}
@@ -318,7 +374,6 @@ export default function Workspace() {
                 </div>
               </>
             ) : (
-              /* Single editor when a sidebar is open */
               <div className={`rounded-xl shadow-lg border overflow-hidden flex flex-col ${theme === "dark" ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
                 <div className={`px-4 py-2.5 border-b flex items-center justify-between ${theme === "dark" ? "border-gray-700" : "border-gray-200"}`}>
                   <div className="flex items-center gap-2">
@@ -341,6 +396,35 @@ export default function Workspace() {
                     remoteCursors={remoteCursors}
                   />
                 </div>
+              </div>
+            )}
+          </div>
+
+          {/* Mobile single panel view */}
+          <div className="flex md:hidden flex-1 min-w-0">
+            {mobilePanel === "editor" ? (
+              <div className={`flex-1 rounded-xl shadow-lg border overflow-hidden flex flex-col ${theme === "dark" ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
+                <div className={`px-3 py-2 border-b flex items-center justify-between ${theme === "dark" ? "border-gray-700" : "border-gray-200"}`}>
+                  <span className="text-xs font-medium truncate">{activeFile}</span>
+                  <span className={`text-xs ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`}>{files[activeFile]?.length || 0} chars</span>
+                </div>
+                <div className="flex-1">
+                  <MonacoEditorPane
+                    path={activeFile}
+                    value={files[activeFile]}
+                    onChange={handleChange}
+                    ydoc={ydocRef.current}
+                    onCursorMove={handleCursorMove}
+                    remoteCursors={remoteCursors}
+                  />
+                </div>
+              </div>
+            ) : (
+              <div className={`flex-1 rounded-xl shadow-lg border overflow-hidden flex flex-col ${theme === "dark" ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}>
+                <div className={`px-3 py-2 border-b ${theme === "dark" ? "border-gray-700" : "border-gray-200"}`}>
+                  <span className="text-xs font-medium">Live Preview</span>
+                </div>
+                <div className="flex-1"><LivePreview /></div>
               </div>
             )}
           </div>

@@ -5,7 +5,7 @@ export default function LoomaNavbar({ dark, setDark }) {
   const navigate = useNavigate();
 
   return (
-    <nav className="z-30 relative flex items-center justify-between px-10 pt-7 pb-2">
+    <nav className="z-30 relative flex items-center justify-between px-4 sm:px-10 pt-5 sm:pt-7 pb-2">
       <div className="flex items-center gap-3">
         <span className="inline-flex items-center font-extrabold text-[1.45rem] text-[#6c54bb] tracking-tight dark:text-[#cfc1ff]">
           <svg className="h-6 w-6 mr-2" viewBox="0 0 44 44">
