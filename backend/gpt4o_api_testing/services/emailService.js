@@ -1,13 +1,6 @@
-const Brevo = require('@getbrevo/brevo');
+const https = require('https');
 
-const client = Brevo.ApiClient.instance;
-client.authentications['api-key'].apiKey = process.env.BREVO_API_KEY;
-
-const transactional = new Brevo.TransactionalEmailsApi();
-
-const FROM_NAME  = 'Looma';
-const FROM_EMAIL = 'looma.app.noreply@gmail.com';
-const APP_URL    = process.env.APP_URL || 'http://localhost:5173';
+const APP_URL = process.env.APP_URL || 'http://localhost:5173';
 
 async function sendInviteEmail(toEmail, inviterName, projectName, inviteToken) {
   const acceptUrl = `${APP_URL}/invite/${inviteToken}`;
@@ -64,15 +57,36 @@ async function sendInviteEmail(toEmail, inviterName, projectName, inviteToken) {
 </body>
 </html>`;
 
-  const email = new Brevo.SendSmtpEmail();
-  email.sender     = { name: FROM_NAME, email: FROM_EMAIL };
-  email.to         = [{ email: toEmail }];
-  email.subject    = `${inviterName} invited you to "${projectName}" on Looma`;
-  email.htmlContent = html;
-  email.textContent = `${inviterName} invited you to collaborate on "${projectName}" in Looma.\n\nAccept here: ${acceptUrl}`;
+  const body = JSON.stringify({
+    sender:      { name: 'Looma', email: 'looma.app.noreply@gmail.com' },
+    to:          [{ email: toEmail }],
+    subject:     `${inviterName} invited you to "${projectName}" on Looma`,
+    htmlContent: html,
+    textContent: `${inviterName} invited you to collaborate on "${projectName}" in Looma.\n\nAccept here: ${acceptUrl}`,
+  });
 
-  const result = await transactional.sendTransacEmail(email);
-  console.log('📧 Brevo result:', JSON.stringify(result));
+  return new Promise((resolve, reject) => {
+    const req = https.request({
+      hostname: 'api.brevo.com',
+      path:     '/v3/smtp/email',
+      method:   'POST',
+      headers:  {
+        'api-key':       process.env.BREVO_API_KEY,
+        'Content-Type':  'application/json',
+        'Content-Length': Buffer.byteLength(body),
+      },
+    }, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        console.log('📧 Brevo result:', res.statusCode, data);
+        res.statusCode < 300 ? resolve(data) : reject(new Error(`Brevo ${res.statusCode}: ${data}`));
+      });
+    });
+    req.on('error', reject);
+    req.write(body);
+    req.end();
+  });
 }
 
 module.exports = { sendInviteEmail };
