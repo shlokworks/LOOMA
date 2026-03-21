@@ -60,13 +60,14 @@ async function sendInviteEmail(toEmail, inviterName, projectName, inviteToken) {
 </body>
 </html>`;
 
-  await resend.emails.send({
+  const result = await resend.emails.send({
     from:    FROM,
     to:      toEmail,
     subject: `${inviterName} invited you to "${projectName}" on Looma`,
     html,
     text: `${inviterName} invited you to collaborate on "${projectName}" in Looma.\n\nAccept here: ${acceptUrl}`,
   });
+  console.log('📧 Resend result:', JSON.stringify(result));
 }
 
 module.exports = { sendInviteEmail };
