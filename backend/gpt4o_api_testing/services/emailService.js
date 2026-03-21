@@ -1,9 +1,13 @@
-const { Resend } = require('resend');
+const Brevo = require('@getbrevo/brevo');
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const client = Brevo.ApiClient.instance;
+client.authentications['api-key'].apiKey = process.env.BREVO_API_KEY;
 
-const FROM    = process.env.EMAIL_FROM || 'Looma <onboarding@resend.dev>';
-const APP_URL = process.env.APP_URL    || 'http://localhost:5173';
+const transactional = new Brevo.TransactionalEmailsApi();
+
+const FROM_NAME  = 'Looma';
+const FROM_EMAIL = 'looma.app.noreply@gmail.com';
+const APP_URL    = process.env.APP_URL || 'http://localhost:5173';
 
 async function sendInviteEmail(toEmail, inviterName, projectName, inviteToken) {
   const acceptUrl = `${APP_URL}/invite/${inviteToken}`;
@@ -60,14 +64,15 @@ async function sendInviteEmail(toEmail, inviterName, projectName, inviteToken) {
 </body>
 </html>`;
 
-  const result = await resend.emails.send({
-    from:    FROM,
-    to:      toEmail,
-    subject: `${inviterName} invited you to "${projectName}" on Looma`,
-    html,
-    text: `${inviterName} invited you to collaborate on "${projectName}" in Looma.\n\nAccept here: ${acceptUrl}`,
-  });
-  console.log('📧 Resend result:', JSON.stringify(result));
+  const email = new Brevo.SendSmtpEmail();
+  email.sender     = { name: FROM_NAME, email: FROM_EMAIL };
+  email.to         = [{ email: toEmail }];
+  email.subject    = `${inviterName} invited you to "${projectName}" on Looma`;
+  email.htmlContent = html;
+  email.textContent = `${inviterName} invited you to collaborate on "${projectName}" in Looma.\n\nAccept here: ${acceptUrl}`;
+
+  const result = await transactional.sendTransacEmail(email);
+  console.log('📧 Brevo result:', JSON.stringify(result));
 }
 
 module.exports = { sendInviteEmail };
