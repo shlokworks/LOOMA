@@ -121,9 +121,18 @@ const withGithubAuth = (opts = {}) => {
   };
 };
 
-// Open GitHub OAuth login (redirects back with ?githubToken= in the URL)
-export const openGithubLogin = () => {
-  window.location.href = `${AUTH}/login`;
+// Open GitHub OAuth login in a popup; calls onSuccess() when token is received
+export const openGithubLogin = (onSuccess) => {
+  const popup = window.open(`${AUTH}/login`, "github-oauth", "width=600,height=700,noopener=no");
+  const handler = (e) => {
+    if (e.origin !== window.location.origin) return;
+    if (e.data?.type === "github-token" && e.data.token) {
+      saveGithubToken(e.data.token);
+      window.removeEventListener("message", handler);
+      if (onSuccess) onSuccess();
+    }
+  };
+  window.addEventListener("message", handler);
 };
 
 // Check login status

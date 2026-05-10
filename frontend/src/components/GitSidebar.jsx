@@ -107,9 +107,10 @@ const GitSidebar = ({ projectPath, onCommit, onBranchChange }) => {
 
   // ---------------- GitHub Login ----------------
   const triggerGithubLogin = () => {
-    // Navigates to backend OAuth endpoint which redirects back to /workspace?githubToken=...
-    // Workspace.jsx picks up the token, saves to localStorage, then GitSidebar re-checks on next load.
-    openGithubLogin();
+    openGithubLogin(async () => {
+      // Token received from popup via postMessage — refresh connection status
+      await loadGithubStatus();
+    });
   };
 
   // ---------------- Git Init ----------------

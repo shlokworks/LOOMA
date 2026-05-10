@@ -60,15 +60,21 @@ export default function Workspace() {
     if (!fileList.length) navigate("/new-project", { replace: true });
   }, [fileList, navigate]);
 
-  // Pick up GitHub token from URL after OAuth redirect and persist it
+  // After GitHub OAuth, the popup lands here with ?githubToken= in the URL.
+  // Send the token to the parent window via postMessage and close the popup.
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const ghToken = params.get("githubToken");
     if (ghToken) {
-      saveGithubToken(ghToken);
-      params.delete("githubToken");
-      const newSearch = params.toString();
-      window.history.replaceState({}, "", window.location.pathname + (newSearch ? `?${newSearch}` : ""));
+      if (window.opener && !window.opener.closed) {
+        window.opener.postMessage({ type: "github-token", token: ghToken }, window.location.origin);
+        window.close();
+      } else {
+        // Fallback: direct navigation (e.g. popup was blocked)
+        saveGithubToken(ghToken);
+        const newSearch = params.toString().replace(/githubToken=[^&]*&?/, "").replace(/&$/, "");
+        window.history.replaceState({}, "", window.location.pathname + (newSearch ? `?${newSearch}` : ""));
+      }
     }
   }, []);
 
