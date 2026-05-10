@@ -78,12 +78,9 @@ router.get("/callback", async (req, res) => {
   }
 });
 
-// Check if logged in — accepts token from Authorization header or session
+// Check if logged in — reads GitHub token from X-Github-Token header or session
 router.get("/status", (req, res) => {
-  const headerToken = req.headers.authorization?.startsWith("Bearer ")
-    ? req.headers.authorization.slice(7)
-    : null;
-  const token = headerToken || req.session?.githubToken;
+  const token = req.headers["x-github-token"] || req.session?.githubToken;
   res.json({
     connected: !!token,
     email: req.session.githubEmail || null,

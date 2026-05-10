@@ -124,13 +124,15 @@ export const clearGithubToken = () => localStorage.removeItem(GITHUB_TOKEN_KEY);
 export const getGithubToken = () => localStorage.getItem(GITHUB_TOKEN_KEY);
 
 const withGithubAuth = (opts = {}) => {
-  const token = getGithubToken();
+  const loomaToken = getLoomaToken();
+  const githubToken = getGithubToken();
   return {
     credentials: "include",
     ...opts,
     headers: {
       ...(opts.headers || {}),
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(loomaToken ? { Authorization: `Bearer ${loomaToken}` } : {}),
+      ...(githubToken ? { "X-Github-Token": githubToken } : {}),
     },
   };
 };

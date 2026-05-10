@@ -164,8 +164,7 @@ router.get("/info", async (req, res) => {
    GITHUB: CREATE REPO
 ============================================================ */
 router.post("/github/create-repo", async (req, res) => {
-  const token = (req.headers.authorization?.startsWith("Bearer ") ? req.headers.authorization.slice(7) : null)
-    || req.session?.githubToken;
+  const token = req.headers["x-github-token"] || req.session?.githubToken;
   const { repoName, isPrivate } = req.body;
 
   if (!token)
@@ -195,8 +194,7 @@ router.post("/github/push", async (req, res) => {
   const path = require("path");
 
   try {
-    const token = (req.headers.authorization?.startsWith("Bearer ") ? req.headers.authorization.slice(7) : null)
-      || req.session?.githubToken;
+    const token = req.headers["x-github-token"] || req.session?.githubToken;
     const { repoFullName, projectPath } = req.body;
 
     if (!token)
