@@ -6,10 +6,24 @@ const AUTH = `${import.meta.env.VITE_API_URL || 'http://localhost:5050'}/auth/gi
    LOCAL GIT
 --------------------------------------------------------- */
 
-const withCredentials = (opts = {}) => ({
-  credentials: "include",
-  ...opts,
-});
+const getLoomaToken = () => {
+  try {
+    const stored = localStorage.getItem("looma-auth");
+    return stored ? JSON.parse(stored)?.state?.token : null;
+  } catch { return null; }
+};
+
+const withCredentials = (opts = {}) => {
+  const token = getLoomaToken();
+  return {
+    credentials: "include",
+    ...opts,
+    headers: {
+      ...(opts.headers || {}),
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+  };
+};
 
 export const getGitStatus = async (projectPath) => {
   const res = await fetch(`${API}/status?projectPath=${encodeURIComponent(projectPath)}`, withCredentials());
