@@ -13,6 +13,8 @@ router.get("/login", (req, res) => {
     `?client_id=${CLIENT_ID}` +
     "&scope=repo,user:email";
 
+  console.log('[github-oauth] CLIENT_ID:', CLIENT_ID);
+  console.log('[github-oauth] Redirecting to:', redirectUrl);
   res.redirect(redirectUrl);
 });
 
