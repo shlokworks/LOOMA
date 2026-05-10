@@ -17,6 +17,7 @@ import CollaboratorsPanel  from "../components/CollaboratorsPanel";
 import JSZip               from "jszip";
 import { saveAs }          from "file-saver";
 import { saveFile }        from "../utils/fileApi";
+import { saveGithubToken } from "../utils/gitApi";
 
 const SOCKET_URL = import.meta.env.VITE_API_URL || "http://localhost:5050";
 
@@ -58,6 +59,18 @@ export default function Workspace() {
   useEffect(() => {
     if (!fileList.length) navigate("/new-project", { replace: true });
   }, [fileList, navigate]);
+
+  // Pick up GitHub token from URL after OAuth redirect and persist it
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const ghToken = params.get("githubToken");
+    if (ghToken) {
+      saveGithubToken(ghToken);
+      params.delete("githubToken");
+      const newSearch = params.toString();
+      window.history.replaceState({}, "", window.location.pathname + (newSearch ? `?${newSearch}` : ""));
+    }
+  }, []);
 
   // Set first active file
   useEffect(() => {

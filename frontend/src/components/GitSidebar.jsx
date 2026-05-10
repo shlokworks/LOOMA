@@ -107,19 +107,9 @@ const GitSidebar = ({ projectPath, onCommit, onBranchChange }) => {
 
   // ---------------- GitHub Login ----------------
   const triggerGithubLogin = () => {
-    setBusyMessage("Connecting to GitHub...");
+    // Navigates to backend OAuth endpoint which redirects back to /workspace?githubToken=...
+    // Workspace.jsx picks up the token, saves to localStorage, then GitSidebar re-checks on next load.
     openGithubLogin();
-
-    const poll = setInterval(async () => {
-      const res = await githubStatus();
-      if (res.connected) {
-        clearInterval(poll);
-        setBusyMessage("");
-        setGithubConnected(true);
-        setGithubEmail(res.email);
-        alert(`Connected as ${res.email}`);
-      }
-    }, 1200);
   };
 
   // ---------------- Git Init ----------------

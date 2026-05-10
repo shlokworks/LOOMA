@@ -66,19 +66,24 @@ router.get("/callback", async (req, res) => {
 
     req.session.githubEmail = email || null;
 
-    // Redirect back to frontend; use environment value if provided
+    // Pass token back to frontend via URL param so it can be stored in localStorage.
+    // Session-only storage breaks when frontend and backend are on different origins (CORS/SameSite).
     const REDIRECT = process.env.GITHUB_OAUTH_REDIRECT || "http://localhost:5173/workspace";
-    res.redirect(REDIRECT);
+    res.redirect(`${REDIRECT}?githubToken=${encodeURIComponent(accessToken)}`);
   } catch (err) {
     console.error("GitHub OAuth Error:", err.response?.data || err.message || err);
     res.status(500).json({ error: "GitHub OAuth Error", details: err.response?.data || err.message });
   }
 });
 
-// Check if logged in
+// Check if logged in — accepts token from Authorization header or session
 router.get("/status", (req, res) => {
+  const headerToken = req.headers.authorization?.startsWith("Bearer ")
+    ? req.headers.authorization.slice(7)
+    : null;
+  const token = headerToken || req.session?.githubToken;
   res.json({
-    connected: !!req.session.githubToken,
+    connected: !!token,
     email: req.session.githubEmail || null,
   });
 });

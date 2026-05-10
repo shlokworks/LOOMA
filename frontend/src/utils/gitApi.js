@@ -103,20 +103,38 @@ export const deleteBranch = async (projectPath, branchName) => {
    GITHUB AUTH + PUSH
 --------------------------------------------------------- */
 
-// Open GitHub OAuth login
+const GITHUB_TOKEN_KEY = "looma_github_token";
+
+export const saveGithubToken = (token) => localStorage.setItem(GITHUB_TOKEN_KEY, token);
+export const clearGithubToken = () => localStorage.removeItem(GITHUB_TOKEN_KEY);
+export const getGithubToken = () => localStorage.getItem(GITHUB_TOKEN_KEY);
+
+const withGithubAuth = (opts = {}) => {
+  const token = getGithubToken();
+  return {
+    credentials: "include",
+    ...opts,
+    headers: {
+      ...(opts.headers || {}),
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+  };
+};
+
+// Open GitHub OAuth login (redirects back with ?githubToken= in the URL)
 export const openGithubLogin = () => {
-  window.open(`${AUTH}/login`, "_blank", "noopener,noreferrer");
+  window.location.href = `${AUTH}/login`;
 };
 
 // Check login status
 export const githubStatus = async () => {
-  const res = await fetch(`${AUTH}/status`, withCredentials());
+  const res = await fetch(`${AUTH}/status`, withGithubAuth());
   return res.json();
 };
 
 // Create GitHub repo
 export const createGithubRepo = async (repoName) => {
-  const res = await fetch(`${API}/github/create-repo`, withCredentials({
+  const res = await fetch(`${API}/github/create-repo`, withGithubAuth({
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ repoName }),
@@ -126,7 +144,7 @@ export const createGithubRepo = async (repoName) => {
 
 // Push local project → GitHub repo
 export const pushAllToGithub = async (repoFullName, projectPath) => {
-  const res = await fetch(`${API}/github/push`, withCredentials({
+  const res = await fetch(`${API}/github/push`, withGithubAuth({
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ repoFullName, projectPath }),
