@@ -67,14 +67,9 @@ app.use('/auth/looma', authRoutes);
 /* ──────────────────────────────────────────────────────────────
    GITHUB OAUTH ROUTES
 ────────────────────────────────────────────────────────────── */
-console.log('🔍 Loading GitHub OAuth routes...');
-try {
-  const githubOAuth = require('./routes/githubOAuth');
-  app.use('/auth/github', githubOAuth);
-  console.log('✅ GitHub OAuth routes loaded');
-} catch (error) {
-  console.error('❌ ERROR loading GitHub OAuth:', error.message);
-}
+const githubOAuth = require('./routes/githubOAuth');
+app.use('/auth/github', githubOAuth);
+console.log('✅ GitHub OAuth routes loaded');
 
 /* ──────────────────────────────────────────────────────────────
    PROJECT DB ROUTES  (protected)
@@ -91,14 +86,9 @@ app.use('/api/templates', authMiddleware, templateRoutes);
 /* ──────────────────────────────────────────────────────────────
    GIT ROUTES  (protected)
 ────────────────────────────────────────────────────────────── */
-console.log('🔍 Loading Git Routes...');
-try {
-  const gitRoutes = require('./routes/gitRoutes');
-  app.use('/api/git', authMiddleware, gitRoutes);
-  console.log('✅ Git routes loaded successfully');
-} catch (error) {
-  console.error('❌ ERROR loading Git Routes:', error.message);
-}
+const gitRoutes = require('./routes/gitRoutes');
+app.use('/api/git', authMiddleware, gitRoutes);
+console.log('✅ Git routes loaded successfully');
 
 /* ──────────────────────────────────────────────────────────────
    FILE ROUTES  (protected)
